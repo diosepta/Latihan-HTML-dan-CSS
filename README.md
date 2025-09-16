@@ -1,1 +1,1 @@
-# Latihan Web Tecnology
+# Latihan HTML dan CSS
