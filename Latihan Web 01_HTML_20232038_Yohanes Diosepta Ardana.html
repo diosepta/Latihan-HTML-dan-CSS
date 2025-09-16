@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Layout dengan Tabel</title>
+    <style>
+        /* Gaya untuk keseluruhan body halaman */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center; /* Membuat tabel berada di tengah halaman */
+        }
+
+        /* Gaya umum untuk tabel */
+        table {
+            width: 700px;
+            border-collapse: collapse; /* Menggabungkan border */
+            border: 1px solid #c0a060; /* Warna border luar */
+        }
+
+        /* Gaya umum untuk semua sel */
+        th, td {
+            border: 1px solid #c0a060;
+            text-align: center;
+        }
+
+        /* HEADER */
+        thead tr th {
+            background-color: #ffdca0; /* Warna latar header */
+            height: 80px; /* Tinggi baris header */
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* NAVIGASI */
+        tbody tr:nth-child(1) td {
+            background-color: #c0d8ff; /* Warna latar navigasi */
+            height: 60px;
+            font-weight: bold;
+        }
+
+        /* KONTEN UTAMA */
+        tbody tr:nth-child(2) td.content {
+            background-color: #f9c0c0; /* Warna latar konten */
+            vertical-align: top; /* Konten sejajar ke atas */
+            text-align: left; /* Teks rata kiri */
+            padding: 20px;
+            width: 5000px; /* Ukuran terlalu besar, bisa disesuaikan */
+            height: 260px;
+        }
+
+        /* Gaya tambahan untuk section dalam konten agar turun dan menjorok */
+        tbody tr:nth-child(2) td.content section {
+            padding-top: 40px;    /* Menurunkan posisi section */
+            padding-left: 40px;   /* Menjorok ke kanan */
+        }
+
+        /* SIDEBAR */
+        tbody tr:nth-child(2) td.sidebar {
+            background-color: #c0d9c0; /* Warna sidebar */
+            vertical-align: top;
+            text-align: left;
+            padding: 20px;
+            width: 220px;
+        }
+
+        /* Mengatur posisi menu agar turun sedikit */
+        tbody tr:nth-child(2) td.sidebar aside {
+            margin-top: 50px; /* Jarak atas menu */
+        }
+
+        /* Menggeser tulisan "Menu:" sedikit ke kiri */
+        tbody tr:nth-child(2) td.sidebar strong {
+            margin-left: -15px;
+        }
+
+        /* FOOTER */
+        tfoot tr td {
+            background-color: #ffdca0; /* Warna footer */
+            height: 60px;
+            font-weight: bold;
+        }
+
+        /* Gaya untuk Heading */
+        h1 {
+            margin: 0 0 20px 0;
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        /* Gaya paragraf */
+        p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Gaya untuk daftar menu */
+        ul {
+            padding-left: 20px;
+            margin: 20px 0 0 0;
+        }
+
+        ul li {
+            margin-bottom: 6px;
+        }
+
+        /* Menampilkan elemen strong sebagai block */
+        strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Struktur utama menggunakan tabel -->
+<table>
+    <!-- Bagian HEADER -->
+    <thead>
+        <tr>
+            <th colspan="2">HEADER</th>
+        </tr>
+    </thead>
+
+    <!-- Bagian TUBUH halaman -->
+    <tbody>
+        <!-- Baris navigasi -->
+        <tr>
+            <td colspan="2">NAVIGASI</td>
+        </tr>
+
+        <!-- Baris konten utama dan sidebar -->
+        <tr>
+            <!-- Kolom untuk konten utama -->
+            <td class="content">
+                <section>
+                    <h1>Heading 1</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur </p>
+                    <p>adipisicing elit, sed do eiusmod tempor</p>
+                    <p>incididunt ut labore et dolore magna aliqua.</p>
+                </section>
+            </td>
+
+            <!-- Kolom untuk sidebar -->
+            <td class="sidebar">
+                <aside>
+                    <strong>Menu:</strong>
+                    <ul>
+                        <li>Home</li>
+                        <li>Berita</li>
+                        <li>Layanan</li>
+                        <li>Kontak</li>
+                    </ul>
+                </aside>
+            </td>
+        </tr>
+    </tbody>
+
+    <!-- Bagian FOOTER -->
+    <tfoot>
+        <tr>
+            <td colspan="2">FOOTER</td>
+        </tr>
+    </tfoot>
+</table>
+
+</body>
+</html>
