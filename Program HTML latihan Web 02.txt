@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Form Mirip Gambar</title>
+<style>
+    body {
+        font-family: 'Courier New', monospace;
+        margin: 50px;  
+    }
+
+    .scroll-container {
+        border: 5px groove #ccc;
+        padding: 20px;
+        width: fit-content;
+        height: auto;
+        overflow-y: scroll; /* hanya untuk dekoratif di luar */
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0px;
+    }
+
+    /* Label sejajar tengah */
+    td {
+        vertical-align: middle;
+        padding-bottom: 10px;
+    }
+
+    label {
+        display: inline-block;
+        width: 90px;
+        text-align: left;
+    }
+
+    #name { width: 260px; }
+    #email { width: 300px; }
+    #postcode { width: 120px; }
+
+    /* Scrollbar hanya panah, tanpa batang */
+    #address {
+        width: 200px;
+        height: 75px;
+        resize: none;
+        overflow-y: scroll;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+
+    /* Chrome / Edge / Safari */
+    #address::-webkit-scrollbar {
+        width: 16px;
+    }
+
+    #address::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+
+    #address::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Tombol panah atas dan bawah */
+    #address::-webkit-scrollbar-button:single-button {
+        background: #ccc;
+        height: 16px;
+    }
+
+    #address::-webkit-scrollbar-button:single-button:vertical:decrement {
+        background: #ccc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><polygon points="4,0 0,4 8,4" fill="black"/></svg>') no-repeat center;
+    }
+
+    #address::-webkit-scrollbar-button:single-button:vertical:increment {
+        background: #ccc url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8"><polygon points="0,0 8,0 4,4" fill="black"/></svg>') no-repeat center;
+    }
+
+    /* Firefox */
+    #address {
+        scrollbar-width: thin;
+    }
+</style>
+</head>
+<body>
+
+<form autocomplete="off">
+    <div class="scroll-container">
+        <table>
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" value="you name here"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" name="email" value="your email here"></td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td>
+                    <textarea id="address" name="address">25 Nowhere Street
+Somewhere
+Not Here
+Y2K 5RU</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="postcode">Postcode:</label></td>
+                <td><input type="text" id="postcode" name="postcode" value="postal code"></td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+<script>
+    // Get all the input elements
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const addressInput = document.getElementById('address');
+    const postcodeInput = document.getElementById('postcode');
+
+    // Add event listeners for Enter key on each field
+    nameInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            emailInput.focus();
+        }
+    });
+
+    emailInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            addressInput.focus();
+        }
+    });
+
+    addressInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            postcodeInput.focus();
+        }
+    });
+
+    // Fungsi untuk menghapus nilai input jika nilainya sama dengan teks default
+    function clearInput(element, defaultValue) {
+        if (element.value === defaultValue) {
+            element.value = '';
+        }
+    }
+
+    // Fungsi untuk mengembalikan nilai default jika input kosong
+    function restoreInput(element, defaultValue) {
+        if (element.value === '') {
+            element.value = defaultValue;
+        }
+    }
+
+    // Tambahkan event listener untuk fokus pada setiap elemen input
+    nameInput.addEventListener('focus', () => clearInput(nameInput, 'you name here'));
+    nameInput.addEventListener('blur', () => restoreInput(nameInput, 'you name here'));
+
+    emailInput.addEventListener('focus', () => clearInput(emailInput, 'your email here'));
+    emailInput.addEventListener('blur', () => restoreInput(emailInput, 'your email here'));
+
+    addressInput.addEventListener('focus', () => clearInput(addressInput, '25 Nowhere Street\nSomewhere\nNot Here\nY2K 5RU'));
+    addressInput.addEventListener('blur', () => restoreInput(addressInput, '25 Nowhere Street\nSomewhere\nNot Here\nY2K 5RU'));
+    
+    postcodeInput.addEventListener('focus', () => clearInput(postcodeInput, 'postal code'));
+    postcodeInput.addEventListener('blur', () => restoreInput(postcodeInput, 'postal code'));
+
+</script>
+
+</body>
+</html>
